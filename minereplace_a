@@ -18,6 +18,7 @@ function digChamber()
   end
   
   write("Connecting...\n")
+  turtle.back()
   turtle.down()
   turtle.turnLeft()
   turtle.dig()
