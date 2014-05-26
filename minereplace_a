@@ -2,25 +2,20 @@
 write("How deep?")
 local Num = tonumber( read() )
 
-for i=1,Num do
-  for j=1, 5 do
-    if( turtle.dig() ) then
-	else
-	  turtle.forward()
-	end
-	write("turtle forward")
+for i=1,Num,1 do
+  write("Loop i iter["..tostring(i).."]\n")
+  
+  for j=1,5,1 do
+  	write("Loop j iter["..tostring(j).."]\n")
+    turtle.dig()
+	turtle.forward()
   end
   
-  for j=1, 4 do
+  for k=1,4,1 do
+    write("Loop k iter["..tostring(k).."]\n")
     turtle.back()
   end
-  write("turtle backup")
   
-  if( turtle.digDown() ) then
-    write( "Couldn't dig down." )
-    turtle.down()
-  else
-    turtle.down()
-  end
-  write("turtle down")
+  turtle.digDown()
+  turtle.down()
 end
