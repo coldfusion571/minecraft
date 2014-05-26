@@ -3,6 +3,7 @@ local chamber_width=5
 local chamber_length=10
 
 function digChamber()
+  write("Digging first pass\n")
   for c=1,chamber_length,1 do
     turtle.digUp()
 	turtle.digDown()
@@ -15,34 +16,17 @@ function digChamber()
 	turtle.forward()
   end
   
+  write("Connecting...\n")
   turtle.down()
-  turtle.left()
+  turtle.turnLeft()
   turtle.dig()
   turtle.forward()
   turtle.dig()
   turtle.forward()
-  
-  turtle.left()
-  
-  for c=1,chamber_length,1 do
-    turtle.dig()
-    turtle.digUp()
-	turtle.turnLeft()
-	turtle.dig()
-	turtle.turnRight()
-	turtle.forward()
-  end
   
   turtle.turnLeft()
   
-  turtle.forward()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
-  turtle.turnLeft()
-  
+  write("Digging lower left flank\n")
   for c=1,chamber_length,1 do
     turtle.dig()
     turtle.digUp()
@@ -52,6 +36,28 @@ function digChamber()
 	turtle.forward()
   end
 
+  write("Connecting...\n")  
+  turtle.turnLeft()
+  
+  turtle.forward()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.turnLeft()
+ 
+  write("Digging lower right flank\n") 
+  for c=1,chamber_length,1 do
+    turtle.dig()
+    turtle.digUp()
+	turtle.turnLeft()
+	turtle.dig()
+	turtle.turnRight()
+	turtle.forward()
+  end
+
+  write("Connecting...\n")
   turtle.up()
   turtle.digUp()
   turtle.up()
@@ -60,6 +66,7 @@ function digChamber()
   turtle.turnLeft()
   turtle.turnLeft()
   
+  write("Digging upper right flank\n") 
   for c=1,chamber_length,1 do
     turtle.dig()
     turtle.digDown()
@@ -69,6 +76,7 @@ function digChamber()
 	turtle.forward()
   end
   
+  write("Connecting...\n")  
   turtle.turnRight()
   turtle.forward()
   turtle.forward()
@@ -78,6 +86,7 @@ function digChamber()
   turtle.forward()
   turtle.turnRight()
   
+  write("Digging upper left flank\n") 
   for c=1,chamber_length,1 do
     turtle.dig()
     turtle.digDown()
