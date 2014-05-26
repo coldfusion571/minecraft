@@ -1,0 +1,18 @@
+
+write("How deep?")
+local Num = tonumber( read() )
+
+for i=1,Num do
+  for j=1, 5 do
+    if( turtle.dig() ) then
+	else
+	  turtle.forward()
+	end
+  end
+  
+  for j=1, 4 do
+    turtle.back()
+  end
+  turtle.digDown()
+  turtle.down()
+end
