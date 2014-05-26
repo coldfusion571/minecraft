@@ -2,18 +2,6 @@ local chamber_height=4
 local chamber_width=5
 local chamber_length=10
 
-write("How deep?")
-local levels = tonumber( read() )
-
-write("How many chambers?")
-local chambers = tonumber( read() )
-
-write("Chamber start level?")
-local chamber_start_level = tonumber( read() )
-
-write("Chamber spacing?")
-local chamber_spacing = tonumber( read() )
-
 function digChamber()
   for c=1,chamber_length,1 do
     turtle.digUp()
@@ -101,6 +89,18 @@ function digChamber()
 end
 
 function main()
+  write("How deep?")
+  local levels = tonumber( read() )
+
+  write("How many chambers?")
+  local chambers = tonumber( read() )
+
+  write("Chamber start level?")
+  local chamber_start_level = tonumber( read() )
+
+  write("Chamber spacing?")
+  local chamber_spacing = tonumber( read() )
+
   for i=1,levels,1 do
     write("Loop i iter["..tostring(i).."]\n")
   
