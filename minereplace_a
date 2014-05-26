@@ -8,11 +8,19 @@ for i=1,Num do
 	else
 	  turtle.forward()
 	end
+	write("turtle forward")
   end
   
   for j=1, 4 do
     turtle.back()
   end
-  turtle.digDown()
-  turtle.down()
+  write("turtle backup")
+  
+  if( turtle.digDown() ) then
+    write( "Couldn't dig down." )
+    turtle.down()
+  else
+    turtle.down()
+  end
+  write("turtle down")
 end
