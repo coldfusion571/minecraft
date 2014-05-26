@@ -14,29 +14,6 @@ local chamber_start_level = tonumber( read() )
 write("Chamber spacing?")
 local chamber_spacing = tonumber( read() )
 
-for i=1,levels,1 do
-  write("Loop i iter["..tostring(i).."]\n")
-  
-  for j=1,5,1 do
-  	write("Loop j iter["..tostring(j).."]\n")
-    turtle.dig()
-	turtle.forward()
-  end
-  
-  for k=1,4,1 do
-    write("Loop k iter["..tostring(k).."]\n")
-    turtle.back()
-  end
-  
-  turtle.digDown()
-  turtle.down()
-  
-  if( i == chamber_start_level ) then
-    digChamber()
-  end
-end
-
-
 function digChamber()
   for c=1,chamber_length,1 do
     turtle.digUp()
@@ -122,3 +99,30 @@ function digChamber()
 	turtle.forward()
   end
 end
+
+function main()
+  for i=1,levels,1 do
+    write("Loop i iter["..tostring(i).."]\n")
+  
+    for j=1,5,1 do
+    	write("Loop j iter["..tostring(j).."]\n")
+      turtle.dig()
+	  turtle.forward()
+    end
+  
+    for k=1,4,1 do
+      write("Loop k iter["..tostring(k).."]\n")
+      turtle.back()
+    end
+  
+    turtle.digDown()
+    turtle.down()
+  
+    if( i == chamber_start_level ) then
+      digChamber()
+    end
+  end
+end
+
+main()
+
