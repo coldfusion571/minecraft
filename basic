@@ -1,0 +1,5 @@
+if turtle.forward() then
+  print('Turtle moved forward')
+else
+  print('Turtle didn't move forward')
+end
