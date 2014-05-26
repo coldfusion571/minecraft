@@ -1,8 +1,20 @@
+local chamber_height=4
+local chamber_width=5
+local chamber_length=10
 
 write("How deep?")
-local Num = tonumber( read() )
+local levels = tonumber( read() )
 
-for i=1,Num,1 do
+write("How many chambers?")
+local chambers = tonumber( read() )
+
+write("Chamber start level?")
+local chamber_start_level = tonumber( read() )
+
+write("Chamber spacing?")
+local chamber_spacing = tonumber( read() )
+
+for i=1,levels,1 do
   write("Loop i iter["..tostring(i).."]\n")
   
   for j=1,5,1 do
@@ -18,4 +30,95 @@ for i=1,Num,1 do
   
   turtle.digDown()
   turtle.down()
+  
+  if( i == chamber_start_level ) then
+    digChamber()
+  end
+end
+
+
+function digChamber()
+  for c=1,chamber_length,1 do
+    turtle.digUp()
+	turtle.digDown()
+	turtle.turnLeft()
+	turtle.dig()
+	turtle.turnRight()
+	turtle.turnRight()
+	turtle.dig()
+	turtle.turnLeft()
+	turtle.forward()
+  end
+  
+  turtle.down()
+  turtle.left()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  
+  turtle.left()
+  
+  for c=1,chamber_length,1 do
+    turtle.dig()
+    turtle.digUp()
+	turtle.turnLeft()
+	turtle.dig()
+	turtle.turnRight()
+	turtle.forward()
+  end
+  
+  turtle.turnLeft()
+  
+  turtle.forward()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.turnLeft()
+  
+  for c=1,chamber_length,1 do
+    turtle.dig()
+    turtle.digUp()
+	turtle.turnLeft()
+	turtle.dig()
+	turtle.turnRight()
+	turtle.forward()
+  end
+
+  turtle.up()
+  turtle.digUp()
+  turtle.up()
+  turtle.digUp()
+  turtle.up()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  
+  for c=1,chamber_length,1 do
+    turtle.dig()
+    turtle.digDown()
+	turtle.turnRight()
+	turtle.dig()
+	turtle.turnLeft()
+	turtle.forward()
+  end
+  
+  turtle.turnRight()
+  turtle.forward()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.dig()
+  turtle.forward()
+  turtle.turnRight()
+  
+  for c=1,chamber_length,1 do
+    turtle.dig()
+    turtle.digDown()
+	turtle.turnRight()
+	turtle.dig()
+	turtle.turnLeft()
+	turtle.forward()
+  end
 end
