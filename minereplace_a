@@ -5,6 +5,7 @@ local chamber_length=10
 function digChamber()
   write("Digging first pass\n")
   for c=1,chamber_length,1 do
+    turtle.dig()
     turtle.digUp()
 	turtle.digDown()
 	turtle.turnLeft()
