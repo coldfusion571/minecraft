@@ -3,9 +3,16 @@ local chamber_width=5
 local chamber_length=10
 
 function myForward()
-  if( !turtle.forward() ) then
+  if not turtle.forward() then
     turtle.dig()
 	turtle.forward()
+  end
+end
+
+function myUp()
+  if not turtle.up() then
+    turtle.digUp()
+	turtle.up()
   end
 end
 
@@ -63,11 +70,9 @@ function digChamber()
   end
 
   write("Connecting...\n")
-  turtle.up()
-  turtle.digUp()
-  turtle.up()
-  turtle.digUp()
-  turtle.up()
+  myUp()
+  myUp()
+  myUp()
   turtle.turnLeft()
   turtle.turnLeft()
   
