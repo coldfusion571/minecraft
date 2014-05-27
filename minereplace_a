@@ -2,61 +2,64 @@ local chamber_height=4
 local chamber_width=5
 local chamber_length=10
 
+function myForward()
+  if( !turtle.forward() ) then
+    turtle.dig()
+	turtle.forward()
+  end
+end
+
+function digLeft()
+  turtle.turnLeft()
+  turtle.dig()
+  turtle.turnRight()
+end
+
+function digRight()
+  turtle.turnRight()
+  turtle.dig()
+  turtle.turnLeft()
+end
+
 function digChamber()
   write("Digging first pass\n")
   for c=1,chamber_length,1 do
-    turtle.dig()
     turtle.digUp()
 	turtle.digDown()
-	turtle.turnLeft()
-	turtle.dig()
-	turtle.turnRight()
-	turtle.turnRight()
-	turtle.dig()
-	turtle.turnLeft()
-	turtle.forward()
+    digLeft()
+	digRight()
+	myForward()
   end
   
   write("Connecting...\n")
-  turtle.back()
   turtle.down()
   turtle.turnLeft()
-  turtle.dig()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
+  myForward()
+  myForward()
   
   turtle.turnLeft()
   
   write("Digging lower left flank\n")
   for c=1,chamber_length,1 do
-    turtle.dig()
     turtle.digUp()
-	turtle.turnLeft()
-	turtle.dig()
-	turtle.turnRight()
-	turtle.forward()
+    digLeft()
+	myForward()
   end
 
   write("Connecting...\n")  
   turtle.turnLeft()
   
-  turtle.forward()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
+  myForward()
+  myForward()
+  myForward()
+  myForward()
   turtle.turnLeft()
  
   write("Digging lower right flank\n") 
   for c=1,chamber_length,1 do
-    turtle.dig()
     turtle.digUp()
-	turtle.turnLeft()
-	turtle.dig()
-	turtle.turnRight()
-	turtle.forward()
+    digLeft()
+	myForward()
   end
 
   write("Connecting...\n")
@@ -72,9 +75,7 @@ function digChamber()
   for c=1,chamber_length,1 do
     turtle.dig()
     turtle.digDown()
-	turtle.turnRight()
-	turtle.dig()
-	turtle.turnLeft()
+    digRight()
 	turtle.forward()
   end
   
@@ -92,10 +93,8 @@ function digChamber()
   for c=1,chamber_length,1 do
     turtle.dig()
     turtle.digDown()
-	turtle.turnRight()
-	turtle.dig()
-	turtle.turnLeft()
-	turtle.forward()
+    digRight()
+	myForward()
   end
 end
 
@@ -114,8 +113,7 @@ function main()
 
   for i=1,levels,1 do
     for j=1,5,1 do
-      turtle.dig()
-	  turtle.forward()
+      myForward()
     end
   
     for k=1,4,1 do
