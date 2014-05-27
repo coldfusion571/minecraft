@@ -35,7 +35,9 @@ function digChamber()
 	turtle.digDown()
     digLeft()
 	digRight()
-	myForward()
+	if c ~= chamber_length then
+	  myForward()
+	end
   end
   
   write("Connecting...\n")
@@ -50,7 +52,9 @@ function digChamber()
   for c=1,chamber_length,1 do
     turtle.digUp()
     digLeft()
-	myForward()
+	if c ~= chamber_length then
+	  myForward()
+	end
   end
 
   write("Connecting...\n")  
@@ -66,7 +70,9 @@ function digChamber()
   for c=1,chamber_length,1 do
     turtle.digUp()
     digLeft()
-	myForward()
+	if c ~= chamber_length then
+	  myForward()
+	end
   end
 
   write("Connecting...\n")
@@ -80,7 +86,9 @@ function digChamber()
   for c=1,chamber_length,1 do
     turtle.digDown()
     digRight()
-	myForward()
+	if c ~= chamber_length then
+	  myForward()
+    end
   end
   
   write("Connecting...\n")  
@@ -96,7 +104,9 @@ function digChamber()
     turtle.dig()
     turtle.digDown()
     digRight()
-	myForward()
+	if c ~= chamber_length then
+	  myForward()
+	end
   end
   
   write("Connecting...\n")
