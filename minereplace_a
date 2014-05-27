@@ -2,36 +2,48 @@ local chamber_height=4
 local chamber_width=5
 local chamber_length=10
 
-function myForward()
-  if not turtle.forward() then
+function redundantForward()
+  while not turtle.forward() do
     turtle.dig()
-	turtle.forward()
   end
 end
 
-function myUp()
-  if not turtle.up() then
+function myForward(count)
+  for i=1,count,1 do
+    redundantForward()
+  end
+end
+
+function redundantUp()
+  while not turtle.up() do
     turtle.digUp()
-	turtle.up()
   end
 end
 
-function digLeft()
+function myUp(count)
+  for i=1,count,1 do
+    redundantUp()
+  end
+end
+
+function digLeft(count)
   turtle.turnLeft()
-  turtle.dig()
+  while turtle.dig() do
+  end
   turtle.turnRight()
 end
 
 function digRight()
   turtle.turnRight()
-  turtle.dig()
+  while turtle.dig() do
+  end
   turtle.turnLeft()
 end
 
 function digChamber()
   write("Digging first pass\n")
   for c=1,chamber_length,1 do
-    turtle.digUp()
+    myUp()
 	turtle.digDown()
     digLeft()
 	digRight()
@@ -43,14 +55,13 @@ function digChamber()
   write("Connecting...\n")
   turtle.down()
   turtle.turnLeft()
-  myForward()
-  myForward()
+  myForward(2)
   
   turtle.turnLeft()
   
   write("Digging lower left flank\n")
   for c=1,chamber_length,1 do
-    turtle.digUp()
+    myUp()
     digLeft()
 	if c ~= chamber_length then
 	  myForward()
