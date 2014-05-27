@@ -78,20 +78,17 @@ function digChamber()
   
   write("Digging upper right flank\n") 
   for c=1,chamber_length,1 do
-    turtle.dig()
     turtle.digDown()
     digRight()
-	turtle.forward()
+	myForward()
   end
   
   write("Connecting...\n")  
   turtle.turnRight()
-  turtle.forward()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
-  turtle.dig()
-  turtle.forward()
+  myForward()
+  myForward()
+  myForward()
+  myForward()
   turtle.turnRight()
   
   write("Digging upper left flank\n") 
@@ -101,6 +98,40 @@ function digChamber()
     digRight()
 	myForward()
   end
+  
+  write("Connecting...\n")
+  turtle.turnRight()
+  myForward()
+  turtle.digDown()
+  turtle.down()
+  turtle.turnRight()
+  
+  for c=1,chamber_length,1 do
+    myForward()
+  end
+  
+  write("Connecting...\n")
+  turtle.turnLeft()
+  myForward()
+  myForward()
+  turtle.turnLeft()
+  
+  for c=1,chamber_length,1 do
+    myForward()
+  end
+  
+  write("Returning...\n")
+  turtle.turnLeft()
+  turtle.turnLeft()
+  for c=1,chamber_length,1 do
+    myForward()
+  end
+  turtle.down()
+  turtle.down()
+  turtle.turnRight()
+  myForward()
+  turtle.turnRight()
+  write("Chamber finished.\n")
 end
 
 function main()
