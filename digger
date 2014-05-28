@@ -87,7 +87,7 @@ function moveX(amount)
   else
     setFacing( 3 )
   end
-  myForward( amount )
+  myForward( math.abs(amount) )
   x = x + amount
 end
 
@@ -97,7 +97,7 @@ function moveY(amount)
   else
     setFacing( 0 )
   end
-  myForward( amount )
+  myForward( math.abs(amount) )
   y = y + amount
 end
 
