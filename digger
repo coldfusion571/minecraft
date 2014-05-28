@@ -1,0 +1,122 @@
+local x=0;
+local y=0;
+local z=0;
+local facing=0;
+
+function myRight()
+  turtle.turnRight()
+  if facing == 0 then
+    facing = 1
+  else
+    facing = facing - 1
+  end
+  return facing
+end
+
+function myLeft()
+  turtle.turnLeft()
+  if facing == 3 then
+    facing = 0
+  else
+    facing = facing + 1
+  end
+  return facing
+end
+
+function setFacing(new_facing)
+  while facing ~= new_facing do
+    myLeft()
+  end
+end
+
+function redundantForward()
+  while not turtle.forward() do
+    if turtle.getFuelLevel() ~= "unlimited" and turtle.getFuelLevel() < 1 then
+	  turtle.refuel()
+	end
+	if turtle.detect() then
+      turtle.dig()
+	end
+  end
+end
+
+function myForward(count)
+  for i=1,count,1 do
+    redundantForward()
+  end
+end
+
+function redundantUp()
+  while not turtle.up() do
+    if turtle.getFuelLevel() ~= "unlimited" and turtle.getFuelLevel() < 1 then
+	  turtle.refuel()
+	end
+    if turtle.detectUp() then	
+      turtle.digUp()
+	end
+  end
+end
+
+function myUp(count)
+  for i=1,count,1 do
+    redundantUp()
+  end
+end
+
+function redundantDown()
+  while not turtle.down() do
+    if turtle.getFuelLevel() ~= "unlimited" and turtle.getFuelLevel() < 1 then
+	  turtle.refuel()
+	end
+    if turtle.detectDown() then	
+      turtle.digDown()
+	end
+  end
+end
+
+function myDown(count)
+  for i=1,count,1 do
+    redundantDown()
+  end
+end
+
+function moveX(amount)
+  if amount < 0 then
+    setFacing( 1 )
+  else
+    setFacing( 3 )
+  end
+  myForward( amount )
+  x = x + amount
+end
+
+function moveY(amount)
+  if amount < 0 then
+    setFacing( 2 )
+  else
+    setFacing( 0 )
+  end
+  myForward( amount )
+  y = y + amount
+end
+
+function moveZ(amount)
+  if amount < 0 then
+    myDown( amount )
+  else
+    myUp( amount )
+  end
+  z = z + amount
+end
+
+function main()
+  moveY(3)
+  moveX(3)
+  moveY(-3)
+  moveX(-3)
+  moveZ(2)
+  moveZ(-4)
+  movez(2)
+end
+
+main()
