@@ -116,6 +116,12 @@ function box(x1,y1,z1,x2,y2,z2)
   local rows  = y2 - y1
   local tiers = z2 - z1
   
+  local z_length = math.abs( tiers )
+  local z_dir    = 1
+  if tiers < 0 then
+    z_dir = -1
+  end
+  
   for j=0,tiers,1 do
     for i=0,cols,1 do
       if math.fmod(i,2) == 0 then
@@ -123,11 +129,12 @@ function box(x1,y1,z1,x2,y2,z2)
 	  else
 	    moveY(rows*-1)
 	  end
-	  if( 
-	  moveX(1)
+	  if i ~= cols then
+	    moveX(1)
+      end
     end
-	if i ~= cols then
-	  moveZ(1)
+	if j ~= z_length then
+	  moveZ(z_dir)
 	end
   end
 end
