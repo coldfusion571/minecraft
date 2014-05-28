@@ -97,18 +97,36 @@ function moveY(amount)
   else
     setFacing( 0 )
   end
-  write("MoveY:"..amount..", abs:"..math.abs(amount).."\n")
   myForward( math.abs(amount) )
   y = y + amount
 end
 
 function moveZ(amount)
   if amount < 0 then
-    myDown( amount )
+    myDown( math.abs(amount) )
   else
     myUp( amount )
   end
   z = z + amount
+end
+
+function box(x1,y1,z1,x2,y2,z2)
+  --Assume start point is p1
+  local cols  = x2 - x1
+  local rows  = y2 - y1
+  local tiers = z2 - z1
+  
+  for j=0,tiers,1 do
+    for i=0,cols,1 do
+      if i/2 == 0 then
+        moveY(rows)
+	  else
+	    moveY(rows*-1)
+	  end
+	  moveX(1)
+    end
+	moveUp(1)
+  end
 end
 
 function main()
@@ -133,6 +151,9 @@ function main()
   write("Step 7\n")
   read()
   moveZ(2)
+  write("Trying box..\n")
+  read()
+  box(0,0,0,3,3,3)
   write("done\n")
 end
 
