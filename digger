@@ -118,42 +118,45 @@ function box(x1,y1,z1,x2,y2,z2)
   
   for j=0,tiers,1 do
     for i=0,cols,1 do
-      if i/2 == 0 then
+      if math.fmod(i,2) == 0 then
         moveY(rows)
 	  else
 	    moveY(rows*-1)
 	  end
+	  if( 
 	  moveX(1)
     end
-	moveUp(1)
+	if i ~= cols then
+	  moveZ(1)
+	end
   end
 end
 
 function main()
-  write("Step 1\n")
-  read()
-  moveY(3)
-  write("Step 2\n")
-  read()
-  moveX(3)
-  write("Step 3\n")
-  read()
-  moveY(-3)
-  write("Step 4\n")
-  read()
-  moveX(-3)
-  write("Step 5\n")
-  read()
-  moveZ(2)
-  write("Step 6\n")
-  read()
-  moveZ(-4)
-  write("Step 7\n")
-  read()
-  moveZ(2)
+--  write("Step 1\n")
+--  read()
+--  moveY(3)
+--  write("Step 2\n")
+--  read()
+--  moveX(3)
+--  write("Step 3\n")
+--  read()
+--  moveY(-3)
+--  write("Step 4\n")
+--  read()
+--  moveX(-3)
+--  write("Step 5\n")
+--  read()
+--  moveZ(2)
+--  write("Step 6\n")
+--  read()
+--  moveZ(-4)
+--  write("Step 7\n")
+--  read()
+--  moveZ(2)
   write("Trying box..\n")
   read()
-  box(0,0,0,3,3,3)
+  box(0,0,0,-3,-3,-3)
   write("done\n")
 end
 
