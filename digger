@@ -6,7 +6,7 @@ local facing=0;
 function myRight()
   turtle.turnRight()
   if facing == 0 then
-    facing = 1
+    facing = 3
   else
     facing = facing - 1
   end
@@ -24,6 +24,7 @@ function myLeft()
 end
 
 function setFacing(new_facing)
+  write("cur facing:"..facing..", newfacing:"..new_facing.."\n")
   while facing ~= new_facing do
     myLeft()
   end
@@ -110,13 +111,28 @@ function moveZ(amount)
 end
 
 function main()
+  write("anykey to continue\n")
+  read()
   moveY(3)
+  write("anykey to continue\n")
+  read()
   moveX(3)
+  write("anykey to continue\n")
+  read()
   moveY(-3)
+  write("anykey to continue\n")
+  read()
   moveX(-3)
+  write("anykey to continue\n")
+  read()
   moveZ(2)
+  write("anykey to continue\n")
+  read()
   moveZ(-4)
-  movez(2)
+  write("anykey to continue\n")
+  read()
+  moveZ(2)
+  write("done\n")
 end
 
 main()
