@@ -113,7 +113,7 @@ end
 
 function createCheckpoint()
   write("create cp cur x:"..x..",y:"..y..",z:"..z.."\n")
-  local p = { x = x, y = y, z = z }
+  local p = { px = x, py = y, pz = z }
   table.insert( checkpoints, p )
   return( table.getn( checkpoints ) - 1 )
 end
@@ -122,9 +122,9 @@ function returnToCheckpoint(index)
   local p = checkpoints[index]
   write("return to cp cur x:"..x..",y:"..y..",z:"..z.."\n")
   write("p:"..p.."\n")
-  moveX((p[x]-x)*-1)
-  moveY((p[y]-y)*-1)
-  moveZ((p[z]-z)*-1)
+  moveX((p[px]-x)*-1)
+  moveY((p[py]-y)*-1)
+  moveZ((p[pz]-z)*-1)
 end
 
 function box(x1,y1,z1,x2,y2,z2)
