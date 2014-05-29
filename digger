@@ -2,6 +2,7 @@ local x=0;
 local y=0;
 local z=0;
 local facing=0;
+local checkpoints = {}
 
 function myRight()
   turtle.turnRight()
@@ -110,6 +111,21 @@ function moveZ(amount)
   z = z + amount
 end
 
+function createCheckpoint()
+  local p = { x = x, y = y, z = z }
+  table.insert( checkpoints, p )
+  return( table.getn( checkpoints ) - 1 )
+end
+
+function returnToCheckpoint(index)
+  local p = checkpoints[index]
+  write("p:"..p.."\n")
+  write("cur x:"..x..",y:"..y..",z:"..z.."\n")
+  moveX[(p[x]-x)*-1]
+  moveY[(p[y]-y)*-1]
+  moveZ[(p[z]-z)*-1]
+end
+
 function box(x1,y1,z1,x2,y2,z2)
   --Assume start point is p1
   local cols  = x2 - x1
@@ -168,7 +184,9 @@ function main()
 --  moveZ(2)
   write("Trying box..\n")
   read()
+  local cp = createCheckpoint()
   box(0,0,0,3,3,3)
+  returnToCheckpoint( cp )
   write("done\n")
 end
 
