@@ -161,6 +161,16 @@ function box(x1,y1,z1,x2,y2,z2)
   end
 end
 
+function staircase_a(levels, direction, stepsize)
+  for i=0,levels,1 do
+    moveY(stepsize)
+	if i < levels then
+      moveY((stepsize-1)*-1)
+	  moveZ(direction)
+	end
+  end
+end
+
 function main()
 --  write("Step 1\n")
 --  read()
@@ -183,11 +193,16 @@ function main()
 --  write("Step 7\n")
 --  read()
 --  moveZ(2)
-  write("Trying box..\n")
+  write("Trying base..\n")
   read()
-  local cp = createCheckpoint()
-  box(0,0,0,2,2,2)
-  returnToCheckpoint( cp )
+  
+  staircase_a(6,-1,5)
+  cp1 = createCheckpoint()
+  moveX(-2)
+  setFacing(0)
+  box(0,0,0,4,9,3)
+  returnToCheckpoint(cp1)
+  
   write("done\n")
 end
 
