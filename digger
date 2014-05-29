@@ -112,16 +112,16 @@ function moveZ(amount)
 end
 
 function createCheckpoint()
-  local p = { x = x, y = y, z = z }
+  local p = { "x" = x, "y" = y, "z" = z }
   table.insert( checkpoints, p )
   return( table.getn( checkpoints ) )
 end
 
 function returnToCheckpoint(index)
   local p = checkpoints[index]
-  moveX((p[x]-x)*-1)
-  moveY((p[y]-y)*-1)
-  moveZ((p[z]-z)*-1)
+  moveX((p["x"]-x)*-1)
+  moveY((p["y"]-y)*-1)
+  moveZ((p["z"]-z)*-1)
 end
 
 function box(x1,y1,z1,x2,y2,z2)
