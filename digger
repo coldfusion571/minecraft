@@ -112,19 +112,16 @@ function moveZ(amount)
 end
 
 function createCheckpoint()
-  write("create cp cur x:"..x..",y:"..y..",z:"..z.."\n")
-  local p = { px = x, py = y, pz = z }
+  local p = { x = x, y = y, z = z }
   table.insert( checkpoints, p )
   return( table.getn( checkpoints ) - 1 )
 end
 
 function returnToCheckpoint(index)
   local p = checkpoints[index]
-  write("return to cp cur x:"..x..",y:"..y..",z:"..z.."\n")
-  write("p:"..p.."\n")
-  moveX((p[px]-x)*-1)
-  moveY((p[py]-y)*-1)
-  moveZ((p[pz]-z)*-1)
+  moveX((p[x]-x)*-1)
+  moveY((p[y]-y)*-1)
+  moveZ((p[z]-z)*-1)
 end
 
 function box(x1,y1,z1,x2,y2,z2)
@@ -149,7 +146,7 @@ function box(x1,y1,z1,x2,y2,z2)
 	  else
 	    moveY(rows*-1)
 	  end
-	  if i <= math.abs(cols)-1 then
+	  if i < math.abs(cols) then
 	    if math.fmod(tier_iter,2) == 0 then
 	      moveX(1)
 		else
@@ -158,7 +155,7 @@ function box(x1,y1,z1,x2,y2,z2)
       end
 	  col_iter = col_iter + 1
     end
-	if j <= z_length then
+	if j < z_length then
 	  moveZ(z_dir)
 	end
 	tier_iter = tier_iter + 1
