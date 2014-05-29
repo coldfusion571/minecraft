@@ -25,7 +25,6 @@ function myLeft()
 end
 
 function setFacing(new_facing)
-  write("cur facing:"..facing..", newfacing:"..new_facing.."\n")
   while facing ~= new_facing do
     myLeft()
   end
@@ -112,7 +111,7 @@ function moveZ(amount)
 end
 
 function createCheckpoint()
-  local p = { "x" = x, "y" = y, "z" = z }
+  local p = { x = x, y = y, z = z }
   table.insert( checkpoints, p )
   return( table.getn( checkpoints ) )
 end
