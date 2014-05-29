@@ -197,6 +197,7 @@ function main()
   read()
   
   staircase_a(6,-1,5)
+  moveY(-5)
   cp1 = createCheckpoint()
   moveX(-2)
   setFacing(0)
