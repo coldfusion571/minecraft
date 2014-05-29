@@ -139,25 +139,29 @@ function box(x1,y1,z1,x2,y2,z2)
     z_dir = -1
   end
   
-  -- have to switch the inner loop after change z level.. rewrite?
+  local col_iter  = 0
+  local tier_iter = 0
+  
   for j=0,math.abs(tiers),1 do
     for i=0,math.abs(cols),1 do
-      if math.fmod(i,2) == 0 then
+      if math.fmod(col_iter,2) == 0 then
         moveY(rows)
 	  else
 	    moveY(rows*-1)
 	  end
 	  if i <= math.abs(cols)-1 then
-	    if math.fmod(j,2) == 0 then
+	    if math.fmod(tier_iter,2) == 0 then
 	      moveX(1)
 		else
 		  moveX(-1)
 		end
       end
+	  col_iter = col_iter + 1
     end
 	if j <= z_length then
 	  moveZ(z_dir)
 	end
+	tier_iter = tier_iter + 1
   end
 end
 
