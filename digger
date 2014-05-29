@@ -118,9 +118,9 @@ end
 
 function returnToCheckpoint(index)
   local p = checkpoints[index]
-  moveX((p["x"]-x)*-1)
-  moveY((p["y"]-y)*-1)
-  moveZ((p["z"]-z)*-1)
+  moveX((p["x"]-x))
+  moveY((p["y"]-y))
+  moveZ((p["z"]-z))
 end
 
 function box(x1,y1,z1,x2,y2,z2)
