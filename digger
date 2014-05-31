@@ -163,9 +163,13 @@ end
 
 function staircase_a(levels, direction, stepsize)
   for i=0,levels,1 do
-    moveY(stepsize)
+    local move_amt = stepsize
+    if i > ( levels - stepsize ) then
+	  move_amt = stepsize - ( i - (levels - stepsize) )
+	end
+    moveY(move_amt)
 	if i < levels then
-      moveY((stepsize-1)*-1)
+      moveY((move_amt-1)*-1)
 	  moveZ(direction)
 	end
   end
