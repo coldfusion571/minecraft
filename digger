@@ -25,8 +25,18 @@ function myLeft()
 end
 
 function setFacing(new_facing)
-  while facing ~= new_facing do
-    myLeft()
+  local turns = facing - new_facing
+  
+  if math.abs( turns ) == 3 then
+    turns = (turns -2)*-1
+  end
+  
+  if turns > 0 then
+    for i=1,turns,1 do
+	  myRight()
+	end
+  elseif turns < 0 then
+    for i=1,turns,1 do
   end
 end
 
@@ -176,28 +186,8 @@ function staircase_a(levels, direction, stepsize)
 end
 
 function main()
---  write("Step 1\n")
---  read()
---  moveY(3)
---  write("Step 2\n")
---  read()
---  moveX(3)
---  write("Step 3\n")
---  read()
---  moveY(-3)
---  write("Step 4\n")
---  read()
---  moveX(-3)
---  write("Step 5\n")
---  read()
---  moveZ(2)
---  write("Step 6\n")
---  read()
---  moveZ(-4)
---  write("Step 7\n")
---  read()
---  moveZ(2)
-  write("Trying base..\n")
+
+  write("Trying base..hit enter to start\n")
   read()
   
   staircase_a(6,-1,5)
