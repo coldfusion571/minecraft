@@ -35,8 +35,11 @@ function setFacing(new_facing)
     for i=1,turns,1 do
 	  myRight()
 	end
-  elseif turns < 0 then
+  end
+  if turns < 0 then
     for i=1,turns,1 do
+	  myLeft()
+	end
   end
 end
 
@@ -174,12 +177,15 @@ end
 
 function staircase_a(levels, direction, stepsize)
   for i=0,levels,1 do
+
     local move_amt = stepsize
     if i > ( levels - stepsize ) then
 	  move_amt = stepsize - ( i - (levels - stepsize) )
 	end
+	  write("level:"..i..",moveamt:"..move_amt.."\n")
     moveY(move_amt)
 	if i < levels then
+	  write("backtrack:"..((move_amt-1)*-1).."\n")
       moveY((move_amt-1)*-1)
 	  moveZ(direction)
 	end
